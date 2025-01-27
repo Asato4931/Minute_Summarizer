@@ -1,0 +1,239 @@
+.App {
+  text-align: center;
+  padding-left: 0;
+  margin-left: 0;
+  overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  background: linear-gradient(315deg, #d01f85, #0080cb);
+  background-size: 200% 200%;
+  color: #ffffff;
+  min-height: 100vh;
+
+  animation: Background-Gradient 30s ease infinite;
+}
+
+@keyframes Background-Gradient {
+  0% {
+    background-position: 0% 100%;
+  }
+  12.5% {
+    background-position: 50% 100%;
+  }
+  25% {
+    background-position: 100% 100%;
+  }
+  37.5% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  62.5% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 100% 100%;
+  }
+  87.5% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.container {
+  max-width: 100%;
+  padding-right: 2.5rem;
+}
+
+.Incident_Row {
+  height: 100vh;
+}
+
+.logo {
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  margin-left: -10rem;
+  width: 25%;
+  height: 25%;
+}
+
+.Incident_Left_Column {
+  background: rgba(132, 132, 135, 0.4);
+  min-height: 100vh;
+}
+
+.Card_Collection {
+  width: inherit;
+  display: block;
+  padding-right: 2.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.2rem;
+
+  position: absolute;
+}
+
+.Sidebar-Title {
+  font-size: 2rem;
+
+  color: #ffffff;
+  border-color: #ffffff;
+  border-width: 2px;
+}
+
+.Incident_Right_Column {
+  padding-left: 2rem;
+}
+
+.Incident_Card_True {
+  margin-top: 2rem;
+
+  margin-bottom: 2rem;
+  background: linear-gradient(
+    90deg,
+    rgb(96, 88, 171, 0.9),
+    rgb(0, 128, 203, 0.9) 30%,
+    rgb(93, 148, 197, 0.9)
+  );
+  border-right: #019acd;
+  border-left: #6058ab;
+  border-top: none;
+  border-bottom: none;
+
+  box-shadow: 0px 0px 8px #969595;
+}
+
+.Incident_Card_False {
+  margin-top: 1rem;
+
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgb(208, 31, 133, 0.9),
+    rgb(182, 53, 143, 0.9) 70%,
+    rgb(96, 88, 171, 0.9)
+  );
+  border-right: #6058ab;
+  border-left: #cb0d2d;
+  border-top: none;
+  border-bottom: none;
+  box-shadow: 0px 0px 8px #969595;
+}
+
+.Incident_Card_True:hover {
+  background: #4a4a82;
+  border-radius: 6px;
+}
+
+.Incident_Card_False :hover {
+  background: #cb0d2d;
+  border-radius: 6px;
+}
+
+.card .animate__animated.animate__fadeInLeft {
+  --animate-duration: 1.5s;
+}
+
+.Incident_Button {
+  background: transparent;
+  border-color: transparent !important;
+  height: 4rem;
+  color: #ffffff;
+}
+
+.Summary-Body {
+  text-align: left;
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: block;
+  border-color: rgba(185, 185, 185, 0.5);
+  border-style: solid;
+  border-width: 2px;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(174, 174, 174, 0.5);
+  background-color: rgb(255, 255, 255, 0.9);
+  color: #240532;
+}
+
+.Summary-Text {
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  max-width: fit-content;
+}
+
+.loading-animation {
+  position: absolute;
+  z-index: 0;
+  padding-left: 36vw;
+  padding-top: 40vh;
+}
+
+.Additional-Questions {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.Description {
+  margin-top: 11.5rem;
+  padding-top: 0.5rem;
+  font-size: 1.2rem;
+
+  margin-left: 10rem;
+  margin-right: 10rem;
+  position: relative;
+}
+
+.Description .animate__animated.animate__fadeIn {
+  --animate-duration: 3s;
+}
+
+.Description-Title {
+  position: absolute;
+  margin-top: -2.5rem;
+  background-color: rgb(255, 255, 255, 9);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  padding-bottom: 0.39rem;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.Description-Title-Span {
+  color: #6058ab;
+  font-size: 1.3rem;
+  margin: 0.2rem 0.2rem;
+  font-weight: 800;
+}
+
+.Description-Text {
+  padding: 1.5rem 0.5rem 1rem 0.5rem;
+  font-size: 1.1rem;
+
+  border-radius: 4px;
+  border-top-left-radius: 0;
+
+  color: #ffffff;
+  border: solid 1.5px #ffffff;
+}
+
+.Form-Input {
+  margin-top: 1rem;
+  width: 50%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  background-color: rgb(255, 255, 255, 0.9);
+}
