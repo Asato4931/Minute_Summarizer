@@ -28,10 +28,24 @@ https://www.youtube.com/watch?v=RCkuN6HfxdY
 
 # その他スクリーンショット
 
+## 初期の画面
+
+![image](https://github.com/user-attachments/assets/325ad792-ea36-4cd9-93e2-08949e04a166)
+
+要約をするだけであれば、Chat GPTなどにテキストをコピペすれば済む話ではあるが、その作業が自体が非常に煩わしい。
+
+そこで、可能な限りユーザーの心理的・作業的な負荷を減らすため、ボタン1つを押せば同様の結果が得られるというところがポイント。
+
+
 ## 要約の出力中
 <img width="1398" alt="image" src="https://github.com/user-attachments/assets/2936a96c-8513-4989-a559-4e50f913ebcb" />
+
+UX改善のため、出力は随時ストリーミングされる。
+
 
 ## 完了
 <img width="1398" alt="image" src="https://github.com/user-attachments/assets/d3221965-62b8-49e1-9ba5-d93019b6b795" />
 
+具体的なアクションが提示されることで、仮に着手できていない宿題があった場合はリマインダとして機能をする。
 
+今後はより深掘りをするためのChat Bot機能を追加予定。
