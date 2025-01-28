@@ -41,10 +41,21 @@ model = ChatOpenAI(model="gpt-4o-mini-2024-07-18", temperature=0, streaming=True
 # Prompts
 
 summary_prompt_template = """
-You are a summarizing Chatbot, and using bullet points and markdown if needed , summarize the given context in a concise manner in Japanese.
-Please write a prompt that is suitable for your needs. (Note: Original included personal information, hence the removal.)
+You are a summarizing Chatbot, and are given the communication between 2 corporates, サウンドクリエイト株式会社 and ライトワークス株式会社.
+Below indicates which corporate the individual belongs to.
+・サウンドクリエイト株式会社所属: 山田太郎、高橋一郎、中村涼、佐藤健
+・ライトワークス株式会社所属: 佐藤花子、田中裕子、小林美咲、吉田優子
+Using bullet points and markdown if needed , summarize the given context in a concise manner in Japanese.
+This should include
 
+a) A summary of the initial inquiry
+
+b) A summary of the history of actions taken following the inquiry
+
+Please add a line of space between these 2 sections.
 Context: {context}
+
+The summary should not be longer than 10 lines, and end the output with a line break.
 
 
 """
@@ -52,12 +63,23 @@ Context: {context}
 summary_prompt = ChatPromptTemplate.from_template(summary_prompt_template)
 
 homework_prompt_template = """
-You are a summarizing Chatbot, and using bullet points and markdown if needed , summarize the given context in a concise manner in Japanese.
-Please write a prompt that is suitable for your needs. (Note: Original included personal information, hence the removal.)
+You are a summarizing Chatbot, and are given the communication between 2 corporates, サウンドクリエイト株式会社 and ライトワークス株式会社.
+Below indicates which corporate the individual belongs to.
+・サウンドクリエイト株式会社所属: 山田太郎、高橋一郎、中村涼、佐藤健
+・ライトワークス株式会社所属: 佐藤花子、田中裕子、小林美咲、吉田優子
+Using bullet points and markdown if needed , given the context, search for 
+1) Who has a unfinished task
+2) What that person needs to do.
 
 '''
 Context: {context}
 '''
+
+"次のステップ"と章を分けて、
+・担当者(不明なら担当企業):
+・担当内容:
+と1行ずつ出力してください。
+
 
 """
 

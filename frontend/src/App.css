@@ -53,12 +53,13 @@
   height: 100vh;
 }
 
-.logo {
+.HomeButton {
   margin-top: 1rem;
   margin-bottom: 2.5rem;
-  margin-left: -10rem;
-  width: 25%;
-  height: 25%;
+  margin-left: -11.5rem;
+  width: 12%;
+  height: 12%;
+  filter: drop-shadow(0px 0px 8px #ffffff);
 }
 
 .Incident_Left_Column {
@@ -168,6 +169,21 @@
   padding-right: 2rem;
 
   max-width: fit-content;
+  line-height: 1.5rem;
+}
+
+.Summary-Text h2 {
+  font-size: 1.7rem;
+  margin-left: -1rem;
+}
+.Summary-Text strong {
+  font-size: 1.1rem;
+}
+
+.Summary-Text ul {
+  padding-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  padding-left: 1.5rem;
 }
 
 .loading-animation {
@@ -217,7 +233,7 @@
 
 .Description-Text {
   padding: 1.5rem 0.5rem 1rem 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 
   border-radius: 4px;
   border-top-left-radius: 0;

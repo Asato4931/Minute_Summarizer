@@ -10,7 +10,9 @@ import Row from "react-bootstrap/Row";
 import { BounceLoader } from "react-spinners";
 import ReactMarkDown from "react-markdown";
 
-import Logo from "../assets/img/vite.svg";
+import HomeButton from "../assets/img/home-button.svg";
+
+import "animate.css";
 
 export default function Incidents() {
   const [Title, setTitle] = useState<string>("");
@@ -51,7 +53,7 @@ export default function Incidents() {
         <Col sm={2} className="Incident_Left_Column">
           <div className="Card_Collection">
             <a href="http://localhost:5173/">
-              <img src={Logo} className="logo"></img>
+              <img src={HomeButton} className="HomeButton"></img>
             </a>
             <h2 className="Sidebar-Title">案件 一覧</h2>
             {incident_data.map((incident, id) => (
@@ -82,10 +84,10 @@ export default function Incidents() {
                 <span className="Description-Title-Span">使い方</span>
               </h3>
               <p className="Description-Text">
-                これは現在進行中の案件を、Open AIのAPIを使用して要約を依頼できる
-                Web アプリです。
+                このWebアプリでは現在進行中の案件を、Open
+                AIのAPIを使用して要約を出力できます。
                 <br />
-                左に並んでいる一覧が、該当する案件なので、クリックをして要約を出力してください。
+                現在進行中の案件が左に一覧で並んでいるので、クリックをして要約を出力してください。
               </p>
             </div>
           )}
