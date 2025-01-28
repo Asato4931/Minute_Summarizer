@@ -26,4 +26,12 @@ https://www.youtube.com/watch?v=RCkuN6HfxdY
   <li>fast-api: 0.115.3</li>
 </ul>
 
+# その他スクリーンショット
+
+## 要約の出力中
+<img width="1398" alt="image" src="https://github.com/user-attachments/assets/2936a96c-8513-4989-a559-4e50f913ebcb" />
+
+## 完了
+<img width="1398" alt="image" src="https://github.com/user-attachments/assets/d3221965-62b8-49e1-9ba5-d93019b6b795" />
+
 
