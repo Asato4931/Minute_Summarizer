@@ -13,7 +13,12 @@ https://www.youtube.com/watch?v=RCkuN6HfxdY
 
 # 動作環境
 
-・
-・
-・
-・
+<ul>
+  <li>TypeScript: 5.3.3 </li>
+  <li>Python: 3.11.9 </li>
+  <li>React</li>
+  <li>Vite</li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
