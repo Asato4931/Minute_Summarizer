@@ -16,9 +16,14 @@ https://www.youtube.com/watch?v=RCkuN6HfxdY
 <ul>
   <li>TypeScript: 5.3.3 </li>
   <li>Python: 3.11.9 </li>
-  <li>React</li>
-  <li>Vite</li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li>React: 18.3.1 </li>
+  <li>Vite: 6.0.5 </li>
+  <li>openai: 1.52.1</li>
+  <li>langchain: 0.3.4 </li>
+  <li>langchain-core: 0.3.12</li>
+  <li>langchain-openai: 0.2.3</li>
+  <li>langsmith: 0.1.137</li>
+  <li>fast-api: 0.115.3</li>
 </ul>
+
+
