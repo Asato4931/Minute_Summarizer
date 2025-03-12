@@ -46,7 +46,9 @@ export default function Incidents() {
     );
 
     websocket.onopen = () => {
-      websocket.send(incident.contents);
+      websocket.send(
+        JSON.stringify({ context: incident.contents, id: incident.id })
+      );
     };
 
     websocket.onmessage = (message: MessageEvent) => {
