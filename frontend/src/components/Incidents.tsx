@@ -1,9 +1,12 @@
 import { Incident_Interface } from "../assets/types/Types";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+
+const endpoint = "http://localhost:3000/incident_data";
 
 import Card from "react-bootstrap/Card";
-import { incident_data } from "../assets/data/incident_data";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -20,6 +23,16 @@ export default function Incidents() {
   const [Summary, setSummary] = useState<string>("");
   const [isLoading, setLoading] = useState<boolean>(false);
   const [finished, setFinished] = useState<boolean>(false);
+  const [incident_data, setIncidentData] = useState<Incident_Interface[]>([]);
+
+  useEffect(() => {
+    async function fetchIncidentData() {
+      const response = await axios.get(endpoint);
+      setIncidentData(response.data);
+    }
+
+    fetchIncidentData();
+  }, []);
 
   async function handleClick(incident: Incident_Interface) {
     setTitle(incident.title);
