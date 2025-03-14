@@ -68,7 +68,9 @@ export default function Incidents() {
                   key={id}
                   className="Incident_Button"
                   onClick={() => {
-                    handleClick(incident);
+                    if (!isLoading) {
+                      handleClick(incident);
+                    }
                   }}
                 >
                   {incident.title}
