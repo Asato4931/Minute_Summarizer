@@ -10,6 +10,10 @@ import json
 
 
 from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+
+
+import requests
 
 
 app = FastAPI(
@@ -36,6 +40,7 @@ os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_API_KEY"
 # Models
 
 model = ChatOpenAI(model="gpt-4o-mini-2024-07-18", temperature=0, streaming=True)
+ball_model = ChatOpenAI(model="gpt-4o-mini-2024-07-18", temperature=0, streaming=True)
 
 
 # Prompts
@@ -86,13 +91,42 @@ Context: {context}
 homework_prompt = ChatPromptTemplate.from_template(homework_prompt_template)
 
 
+ball_prompt = ChatPromptTemplate.from_template(
+    """
+あなたは議事録を読み、どの会社の社員に宿題が残されているかをクラス分けする識別器です。
+Below indicates which corporate the individual belongs to.
+・サウンドクリエイト株式会社所属: 山田太郎、高橋一郎、中村涼、佐藤健
+・ライトワークス株式会社所属: 佐藤花子、田中裕子、小林美咲、吉田優子
+
+'''
+議事録: {context}
+'''
+
+回答は、サウンドクリエイト株式会社である場合は「0」、ライトワークス株式会社である場合は「1」、もし両方ある場合は「2」で返してください。
+
+"""
+)
+
+
 # Chains
 
 summary_chain = summary_prompt | model
 homework_chain = homework_prompt | model
 
+ball_chain = (
+    ball_prompt
+    | ball_model.with_config(configurable=dict(max_tokens=1))
+    | StrOutputParser()
+)
+
 
 # Actual APIs
+
+
+async def async_ball_classification(context: str):
+    chain = ball_chain
+    result = await chain.ainvoke({"context": context})
+    return result
 
 
 async def async_get_summary(context: str):
@@ -109,10 +143,21 @@ async def async_get_summary(context: str):
 async def async_chat(websocket: WebSocket):
     await websocket.accept()
     while True:
-        context = await websocket.receive_text()
+        recieved_request = await websocket.receive_text()
+        parsed_request = json.loads(recieved_request)
+        context = parsed_request["context"]
+        id = parsed_request["id"]
+
         async for event in async_get_summary(context):
-            if event["event_type"] == "done":
-                await websocket.close()
-                return
-            else:
+            if event["event_type"] == "on_chat_model_stream":
                 await websocket.send_text(json.dumps(event))
+
+        ball_value = await async_ball_classification(context)
+        print(ball_value)
+        requests.patch(
+            f"http://localhost:3000/incident_data/{id}",
+            json={"ball": ball_value},
+        )
+
+        await websocket.close()
+        return
