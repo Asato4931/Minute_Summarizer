@@ -1,1 +1,4 @@
 .history/
+
+database/db.json
+backend/__pycache__/
