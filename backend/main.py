@@ -104,6 +104,8 @@ Below indicates which corporate the individual belongs to.
 
 回答は、サウンドクリエイト株式会社である場合は「0」、ライトワークス株式会社である場合は「1」、もし両方ある場合は「2」で返してください。
 
+回答は数字1つでお願いします。
+
 """
 )
 
