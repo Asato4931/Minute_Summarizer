@@ -1,6 +1,6 @@
 export interface Incident_Interface {
-  id: number;
-  title: string;
-  contents: string;
-  ball: number;
+  Incident_No: number;
+  Incident_Title: string;
+  Incident_Contents: string;
+  Incident_Ball: number;
 }

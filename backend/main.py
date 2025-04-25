@@ -22,7 +22,11 @@ app = FastAPI(
     version="0.1",
 )
 
-origins = {"http://localhost:3000", "http://localhost:5173"}
+origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "YOUR_FRONTEND_ENDPOINT",
+}
 
 
 app.add_middleware(
@@ -34,9 +38,10 @@ app.add_middleware(
 )
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = "YOUR_LANGCHAIN_API_KEY"
-os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_API_KEY"
+os.environ["LANGCHAIN_API_KEY"] = "YOUR_LANGCHAIN_KEY"
 
+
+os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_KEY"
 # Models
 
 model = ChatOpenAI(model="gpt-4o-mini-2024-07-18", temperature=0, streaming=True)
@@ -147,6 +152,7 @@ async def async_chat(websocket: WebSocket):
         parsed_request = json.loads(recieved_request)
         context = parsed_request["context"]
         id = parsed_request["id"]
+        print(id)
 
         async for event in async_get_summary(context):
             if event["event_type"] == "on_chat_model_stream":
@@ -155,9 +161,15 @@ async def async_chat(websocket: WebSocket):
         ball_value = await async_ball_classification(context)
         print(ball_value)
         requests.patch(
-            f"http://localhost:3000/incident_data/{id}",
-            json={"ball": ball_value},
+            f"YOUR_DB_SERVER_ENDPOINT/{id}",
+            json={"id": id, "ball": ball_value},
         )
 
         await websocket.close()
         return
+
+
+# Health Check
+@app.get("/")
+def health_check():
+    return {"status": "ok"}

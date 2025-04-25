@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-const endpoint = "http://localhost:3000/incident_data";
+const endpoint = "YOUR_DB_SERVER_ENDPOINT";
 
 import Card from "react-bootstrap/Card";
 
@@ -32,22 +32,26 @@ export default function Incidents() {
     }
 
     fetchIncidentData();
+    console.log("Data has been fetched.");
   }, []);
 
   async function handleClick(incident: Incident_Interface) {
-    setTitle(incident.title);
+    setTitle(incident.Incident_Title);
     setFirst(false);
     setSummary("");
     setLoading(true);
     setFinished(false);
 
     const websocket: WebSocket = new WebSocket(
-      "ws://localhost:8000/async_summarizer"
+      "ws://YOUR_BACKEND_SERVER_ENDPOINT"
     );
 
     websocket.onopen = () => {
       websocket.send(
-        JSON.stringify({ context: incident.contents, id: incident.id })
+        JSON.stringify({
+          context: incident.Incident_Contents,
+          id: incident.Incident_No,
+        })
       );
     };
 
@@ -67,14 +71,14 @@ export default function Incidents() {
       <Row>
         <Col sm={2} className="Incident_Left_Column">
           <div className="Card_Collection">
-            <a href="http://localhost:5173/">
+            <a href="/">
               <img src={HomeButton} className="HomeButton"></img>
             </a>
             <h2 className="Sidebar-Title">案件 一覧</h2>
             {incident_data.map((incident, id) => (
               <Card
                 className={
-                  incident.ball === 1
+                  incident.Incident_Ball === 1
                     ? "Incident_Card_True animate__animated animate__fadeInLeft animate__delay-1s"
                     : "Incident_Card_False animate__animated animate__fadeInLeft animate__delay-1s"
                 }
@@ -88,7 +92,7 @@ export default function Incidents() {
                     }
                   }}
                 >
-                  {incident.title}
+                  {incident.Incident_Title}
                 </button>
               </Card>
             ))}
